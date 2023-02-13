@@ -7,8 +7,8 @@ $pkgs=@(
     "ghq"
     "fzf"
     "starship"
+    "sudo"
 )
-
 
 scoop install $pkgs
 
