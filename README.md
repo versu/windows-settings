@@ -62,3 +62,9 @@ code %LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\
         ...
     }
 ```
+
+## TODO
+
+- windows用のdotfilesを作成
+  - git
+    - git config --global core.autocrlf false
