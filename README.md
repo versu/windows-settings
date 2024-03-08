@@ -1,5 +1,13 @@
 # windows-settings
 
+## 1. install winget packages
+
+Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/versu/windows-settings/main/scripts/setup-winget.ps1').Content
+
+## 2. install other
+
+Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/versu/windows-settings/main/install.ps1').Content
+
 ## install Nard Font
 
 ※以下の手順を実行する前に、wingetで各種パッケージをインストールしておくこと。（7zipのインストールが必要なため。）

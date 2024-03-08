@@ -1,17 +1,36 @@
-### Install Scoop ###
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-irm get.scoop.sh | iex
+# common.ps1を読み込む
+$commonScriptPath = "$($PSScriptRoot)/common.ps1"
+. $commonScriptPath
 
-### Install Pacages ###
-$pkgs=@(
-    "ghq"
-    "fzf"
-    "starship"
-    "sudo"
-    "uutils-coreutils"
-)
+$logPath = "$($env:LOG_DIR)\setup-scope.log"
 
-scoop install $pkgs
+$ErrorActionPreference = "Stop"
 
-Install-Module ZLocation -Scope CurrentUser -Force
-Install-Module PSFzf -Scope CurrentUser -Force
+try 
+{
+  ### Install Scoop ###
+  Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+  irm get.scoop.sh | iex
+
+  ### Install Pacages ###
+  $pkgs=@(
+      "ghq"
+      "fzf"
+      "starship"
+      "sudo"
+      "uutils-coreutils"
+  )
+
+  scoop install $pkgs
+
+  Install-Module ZLocation -Scope CurrentUser -Force
+  Install-Module PSFzf -Scope CurrentUser -Force
+}
+catch 
+{
+  WriteErrorLog -logPath $logPath -errorMessage $_
+}
+finally
+{
+  $Error.Clear()
+}

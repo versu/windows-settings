@@ -1,1 +1,1 @@
-git config --global ghq.root ~/repo
+git config --global ghq.root ~/repos
