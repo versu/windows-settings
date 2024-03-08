@@ -1,4 +1,4 @@
-# if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
+﻿# if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
 
 $FONT_URL = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip"
 $FONT_URL_NAME = [System.IO.Path]::GetFileName($FONT_URL)

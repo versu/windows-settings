@@ -1,5 +1,3 @@
-﻿### このファイルは$env:STARSHIP_CONFIGをsetup-psprofile.ps1内で設定しているため、setup-psprofile.ps1の実行後に実行する必要がある。
-
 # 管理者権限で実行していない場合は、管理者権限で再起動
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
 
@@ -7,14 +5,14 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
 
-$logPath = "$($env:LOG_DIR)\setup-starship.log"
+$logPath = "$($env:LOG_DIR)\setup-psprofile.log"
 
 $ErrorActionPreference = "Stop"
 
 try 
 {
   # シンボリックリンクの作成
-  New-Item -ItemType SymbolicLink -Path $env:STARSHIP_CONFIG -Target "$($env:CONFIG_FOLDER)/starship.toml" -Force
+  New-Item -ItemType SymbolicLink -Path $PROFILE.CurrentUserCurrentHost -Target "$($env:CONFIG_FOLDER)/powershell_profile.ps1" -Force
 }
 catch 
 {

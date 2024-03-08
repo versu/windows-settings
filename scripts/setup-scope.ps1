@@ -1,4 +1,4 @@
-# common.ps1を読み込む
+﻿# common.ps1を読み込む
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
 
