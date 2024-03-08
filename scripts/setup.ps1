@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+﻿$ErrorActionPreference = "Stop"
 
 # common.ps1を読み込む
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"

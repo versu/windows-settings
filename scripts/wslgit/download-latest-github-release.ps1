@@ -1,4 +1,4 @@
-# forked from MarkTiedemann/download-latest-release.ps1
+﻿# forked from MarkTiedemann/download-latest-release.ps1
 # Download latest releases from $repo/$file from github
 
 [CmdletBinding()]

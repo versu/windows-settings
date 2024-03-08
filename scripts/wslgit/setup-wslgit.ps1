@@ -1,4 +1,4 @@
-$REPOSITORY_NAME = "andy-5/wslgit"
+﻿$REPOSITORY_NAME = "andy-5/wslgit"
 $DOWNLOAD_TARGET_FILE = "wslgit.zip"
 $DOWNLOAD_DIR = "C:\Program Files"
 
