@@ -1,6 +1,7 @@
 ﻿### starship ###
 
 $env:STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml"
+$ENV:Path+=";C:\Program Files\7-Zip"
 Invoke-Expression (&starship init powershell)
 
 ### ghq-fzf ###

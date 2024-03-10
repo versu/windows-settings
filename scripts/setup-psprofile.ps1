@@ -16,7 +16,8 @@ try
 }
 catch 
 {
-  WriteErrorLog -logPath $logPath -errorMessage $_
+  $errorMessage = $_ | Out-String
+  WriteErrorLog -logPath $logPath -errorMessage $errorMessage
 }
 finally
 {
