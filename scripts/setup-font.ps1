@@ -53,6 +53,9 @@ try
   7z x -o"$UNZIPPED_NERD_FONT_DIR" $DOWNLOAD_NERD_FONT_PATH
   
   InstallFonts($UNZIPPED_NERD_FONT_DIR)
+
+  Remove-Item -Recurse -Force -Path $DOWNLOAD_DIR
+  Remove-Item -Recurse -Force -Path $UNZIPPED_FONT_DIR
 }
 catch 
 {
