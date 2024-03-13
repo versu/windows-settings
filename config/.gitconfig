@@ -5,3 +5,5 @@
 [ghq]
     user = nishitani
     root = ~/repos
+[core]
+	autocrlf = false
