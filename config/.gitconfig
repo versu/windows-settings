@@ -1,0 +1,9 @@
+[user]
+	name = nishitani
+	email = kindberwindow@gmail.com
+
+[ghq]
+    user = nishitani
+    root = ~/repos
+[core]
+	autocrlf = false

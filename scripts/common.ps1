@@ -11,7 +11,11 @@ function WriteErrorLog($logPath, $errorMessage, $isOutputErrorToConsole = $True)
   }
 
   # エラーメッセージをログファイルに書き込む
-  Add-Content -Path $logPath -Value $errorMessage
+  $errorDetails = [pscustomobject]@{
+    Timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
+    ErrorMessage = $errorMessage
+  }
+  $errorDetails | Export-Csv -Path $logPath -Append -NoTypeInformation -Encoding UTF8
 
   if ($isOutputErrorToConsole)
   {

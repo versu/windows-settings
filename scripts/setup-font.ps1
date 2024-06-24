@@ -1,15 +1,4 @@
-﻿# if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
-
-$FONT_URL = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip"
-$FONT_URL_NAME = [System.IO.Path]::GetFileName($FONT_URL)
-$FONT_URL_NAME_WITHOUTEXTENSION = [System.IO.Path]::GetFileNameWithoutExtension($FONT_URL)
-
-$DOWNLOAD_DIR = "$PSScriptRoot\_download"
-$DOWNLOAD_NERD_FONT_PATH = [System.IO.Path]::Combine($DOWNLOAD_DIR, $FONT_URL_NAME)
-
-$UNZIPPED_FONT_DIR = "$PSScriptRoot\_unzipped"
-$UNZIPPED_NERD_FONT_DIR = [System.IO.Path]::Combine($UNZIPPED_FONT_DIR, $FONT_URL_NAME_WITHOUTEXTENSION)
-
+﻿if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
 
 function InstallFonts($fontsPath){
   # Expand-Archive -Path "$($tempPath)\fonts.zip" -Destination $($fontsPath) -Force
@@ -38,11 +27,42 @@ function InstallFonts($fontsPath){
   }
 }
 
+# common.ps1を読み込む
+$commonScriptPath = "$($PSScriptRoot)/common.ps1"
+. $commonScriptPath
 
-if  (!(Test-Path $DOWNLOAD_DIR)){
-  New-Item -Path $DOWNLOAD_DIR -ItemType Directory
+$logPath = "$($env:LOG_DIR)\setup-font.log"
+
+$FONT_URL = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip"
+$FONT_URL_NAME = [System.IO.Path]::GetFileName($FONT_URL)
+$FONT_URL_NAME_WITHOUTEXTENSION = [System.IO.Path]::GetFileNameWithoutExtension($FONT_URL)
+
+$DOWNLOAD_DIR = "$PSScriptRoot\_download"
+$DOWNLOAD_NERD_FONT_PATH = [System.IO.Path]::Combine($DOWNLOAD_DIR, $FONT_URL_NAME)
+
+$UNZIPPED_FONT_DIR = "$PSScriptRoot\_unzipped"
+$UNZIPPED_NERD_FONT_DIR = [System.IO.Path]::Combine($UNZIPPED_FONT_DIR, $FONT_URL_NAME_WITHOUTEXTENSION)
+
+$ErrorActionPreference = "Stop"
+try 
+{
+  if  (!(Test-Path $DOWNLOAD_DIR)){
+    New-Item -Path $DOWNLOAD_DIR -ItemType Directory
+  }
+  Invoke-WebRequest $FONT_URL -OutFile $DOWNLOAD_NERD_FONT_PATH
+  7z x -o"$UNZIPPED_NERD_FONT_DIR" $DOWNLOAD_NERD_FONT_PATH
+  
+  InstallFonts($UNZIPPED_NERD_FONT_DIR)
+
+  Remove-Item -Recurse -Force -Path $DOWNLOAD_DIR
+  Remove-Item -Recurse -Force -Path $UNZIPPED_FONT_DIR
 }
-Invoke-WebRequest $FONT_URL -OutFile $DOWNLOAD_NERD_FONT_PATH
-7z x -o"$UNZIPPED_NERD_FONT_DIR" $DOWNLOAD_NERD_FONT_PATH
-
-InstallFonts($UNZIPPED_NERD_FONT_DIR)
+catch 
+{
+  $errorMessage = $_ | Out-String
+  WriteErrorLog -logPath $logPath -errorMessage $errorMessage
+}
+finally
+{
+  $Error.Clear()
+}
