@@ -34,6 +34,7 @@ winget install -e --id 7zip.7zip
 winget install --id=Learnpulse.Screenpresso  -e
 winget install WinMerge
 winget install -e --id Microsoft.PowerToys --source winget
+winget install -e --id Google.JapaneseIME
 
 # 必要に応じて入れるもの
 # winget install Sourcetree
@@ -49,3 +50,6 @@ winget install -e --id Microsoft.PowerToys --source winget
 # winget install Microsoft.AzureStorageExplorer
 
 # winget install -e --id=Microsoft.VisualStudio.2022.Community
+
+# Node.js
+# winget install -e --id=Volta.Volta 
