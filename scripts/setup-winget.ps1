@@ -53,3 +53,6 @@ winget install -e --id Google.JapaneseIME
 
 # Node.js
 # winget install -e --id=Volta.Volta 
+
+# Temurin (Java JDK)
+# winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
