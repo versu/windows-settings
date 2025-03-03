@@ -57,3 +57,6 @@ winget install -e --id=Obsidian.Obsidian
 
 # Charles Proxy（ローカルプロキシツール）
 # winget install -e --id XK72.Charles
+
+# Temurin (Java JDK)
+# winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
