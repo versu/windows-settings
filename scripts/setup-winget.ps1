@@ -35,6 +35,7 @@ winget install --id=Learnpulse.Screenpresso  -e
 winget install WinMerge
 winget install -e --id Microsoft.PowerToys --source winget
 winget install -e --id Google.JapaneseIME
+winget install -e --id=Obsidian.Obsidian
 
 # 必要に応じて入れるもの
 # winget install Sourcetree
@@ -53,3 +54,6 @@ winget install -e --id Google.JapaneseIME
 
 # Node.js
 # winget install -e --id=Volta.Volta 
+
+# Charles Proxy（ローカルプロキシツール）
+# winget install -e --id XK72.Charles
