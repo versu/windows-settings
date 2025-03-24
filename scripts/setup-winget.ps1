@@ -36,6 +36,7 @@ winget install WinMerge
 winget install -e --id Microsoft.PowerToys --source winget
 winget install -e --id Google.JapaneseIME
 winget install -e --id=Obsidian.Obsidian
+winget install --id=OliverSchwendener.ueli  -e
 
 # 必要に応じて入れるもの
 # winget install Sourcetree
