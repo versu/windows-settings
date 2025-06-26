@@ -18,24 +18,32 @@ winget install dbeaver.dbeaver
 # draw.io
 winget install -e --id JGraph.Draw
 
+# ------------------------------------------------------------------------------------
 # vscode
 # オプションなしだと、フォルダ/ファイルの右クリック「Codeで開く」が出ないので、参考サイトを参考にオプションを指定する。
 # 参考サイト：https://proudust.github.io/20200726-winget-install-vscode/
 # https://zenn.dev/nuits_jp/articles/winget-install-option
+# ------------------------------------------------------------------------------------
 winget install vscode --override "/silent /mergetasks=""addcontextmenufiles,addcontextmenufolders"""
 
+# ------------------------------------------------------------------------------------
 # RDCMan (Remote Desktop Connection Manager)
 # インストール後、rdcman というコマンドが使えるようになる（要ターミナル再起動）
 # rdcmanコマンドでRDCManを起動できる。
+# ------------------------------------------------------------------------------------
 winget install -e --id=Microsoft.Sysinternals.RDCMan
 
 winget install Postman.Postman
 winget install -e --id 7zip.7zip
 winget install --id=Learnpulse.Screenpresso  -e
 winget install WinMerge
-winget install -e --id Microsoft.PowerToys --source winget
+
 winget install -e --id Google.JapaneseIME
 winget install -e --id=Obsidian.Obsidian
+
+# ------------------------------------------------------------------------------------
+# ランチャー
+# ------------------------------------------------------------------------------------
 winget install --id=OliverSchwendener.ueli  -e
 
 # 必要に応じて入れるもの
@@ -56,8 +64,19 @@ winget install --id=OliverSchwendener.ueli  -e
 # Node.js
 # winget install -e --id=Volta.Volta 
 
+# ------------------------------------------------------------------------------------
 # Charles Proxy（ローカルプロキシツール）
+# ------------------------------------------------------------------------------------
 # winget install -e --id XK72.Charles
 
-# Temurin (Java JDK)
+
+# ------------------------------------------------------------------------------------
+# Temurin (Java JDK) 
+# plantuml などJavaが必要なツールを使う場合は、インストールする。
+# ------------------------------------------------------------------------------------
 # winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
+
+# ------------------------------------------------------------------------------------
+# PowerToys
+# ------------------------------------------------------------------------------------
+# winget install -e --id Microsoft.PowerToys --source winget
