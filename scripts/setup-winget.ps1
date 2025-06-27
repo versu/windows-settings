@@ -41,11 +41,6 @@ winget install WinMerge
 winget install -e --id Google.JapaneseIME
 winget install -e --id=Obsidian.Obsidian
 
-# ------------------------------------------------------------------------------------
-# ランチャー
-# ------------------------------------------------------------------------------------
-winget install --id=OliverSchwendener.ueli  -e
-
 # 必要に応じて入れるもの
 # winget install Sourcetree
 
