@@ -1,0 +1,24 @@
+{
+    "extension[Workflow].workflows": [
+        {
+            "actions": [
+                {
+                    "id": "workflow-action-a617834f-0f2a-47b3-93a5-59bcfde9db2e",
+                    "args": {
+                        "command": "rundll32.exe user32.dll,LockWorkStation"
+                    },
+                    "name": "Window Lock",
+                    "handlerId": "ExecuteCommand"
+                }
+            ],
+            "name": "lo",
+            "id": "workflow-799fcb9d-2d09-4e86-b6f0-254c98544fa5",
+            "requiresConfirmation": false
+        }
+    ],
+    "extensions.enabledExtensionIds": [
+        "Workflow",
+        "ApplicationSearch",
+        "UeliCommand"
+    ]
+}
