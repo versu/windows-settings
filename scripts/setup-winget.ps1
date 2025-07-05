@@ -71,7 +71,3 @@ winget install -e --id=Obsidian.Obsidian
 # ------------------------------------------------------------------------------------
 # winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
 
-# ------------------------------------------------------------------------------------
-# PowerToys
-# ------------------------------------------------------------------------------------
-# winget install -e --id Microsoft.PowerToys --source winget
