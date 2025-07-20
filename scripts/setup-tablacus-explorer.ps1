@@ -1,4 +1,4 @@
-# 管理者権限で実行していない場合は、管理者権限で再起動
+﻿# 管理者権限で実行していない場合は、管理者権限で再起動
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
     Start-Process powershell.exe "-NoExit -File `"$PSCommandPath`"" -Verb RunAs
     exit 
@@ -70,6 +70,16 @@ if (Test-Path $targetPath) {
 } else {
     Write-Warning "TE64.exe not found: $targetPath"
 }
+
+# ---------------------------------------------------------------------------------------
+# スタートアップアプリとして登録
+# ---------------------------------------------------------------------------------------
+
+# スタートアップに登録する汎用スクリプト
+$statupUtilPath = "$($PSScriptRoot)/utils/app-startup/app-startup.ps1"
+
+# スタートアップに登録
+& $statupUtilPath -AppPath $targetPath
 
 # ---------------------------------------------------------------------------------------
 # 設定ファイルのシンボリックリンクを設定
