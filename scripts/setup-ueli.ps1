@@ -13,3 +13,16 @@ $ueliConfigPath = Join-Path $PSScriptRoot '..\config\ueli\ueli9.settings.json'
 
 # ueliの設定ファイルをコピー
 Copy-Item $ueliConfigPath -Destination $ueliPath -Force
+
+# ---------------------------------------------------------------------------------------
+# スタートアップアプリとして登録
+# ---------------------------------------------------------------------------------------
+
+# ueliの実行ファイルのパス
+$ueliExePath = Join-Path $ueliPath 'Ueli.exe'
+
+# スタートアップに登録する汎用スクリプト
+$statupUtilPath = "$($PSScriptRoot)/utils/app-startup/app-startup.ps1"
+
+# スタートアップに登録
+& $statupUtilPath -AppPath $ueliExePath
