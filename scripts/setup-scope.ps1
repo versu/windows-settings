@@ -2,6 +2,10 @@
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
 
+# logger.ps1を読み込む
+$loggerScriptPath = "$($PSScriptRoot)/utils/logger.ps1"
+. $loggerScriptPath
+
 $logPath = "$($env:LOG_DIR)\setup-scope.log"
 
 $ErrorActionPreference = "Stop"
@@ -29,7 +33,7 @@ try
 catch 
 {
   $errorMessage = $_ | Out-String
-  WriteErrorLog -logPath $logPath -errorMessage $errorMessage
+  WriteErrorLog -logPath $logPath -message $errorMessage
 }
 finally
 {

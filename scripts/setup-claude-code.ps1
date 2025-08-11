@@ -24,7 +24,7 @@ try
 catch 
 {
   $errorMessage = $_ | Out-String
-  WriteErrorLog -logPath $logPath -errorMessage $errorMessage
+  WriteErrorLog -logPath $logPath -message $errorMessage
 }
 finally
 {
