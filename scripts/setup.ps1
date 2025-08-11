@@ -10,4 +10,4 @@ Start-Process powershell.exe -ArgumentList "-File $($env:SCRIPT_FOLDER)/setup-li
 Start-Process powershell.exe -ArgumentList "-File $($env:SCRIPT_FOLDER)/setup-font.ps1" -Verb RunAs -Wait
 
 # setup other tools
-Invoke-Expression -Command "$($env:SCRIPT_FOLDER)/setup-qttabbar.ps1"
+
