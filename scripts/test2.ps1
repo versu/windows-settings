@@ -1,4 +1,4 @@
-### Set ExecutionPolicy ### 
+﻿### Set ExecutionPolicy ### 
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ### Set ExecutionPolicy ### 
