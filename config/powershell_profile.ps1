@@ -28,7 +28,7 @@ Import-Module PSFzf
 $env:_PSFZF_FZF_DEFAULT_OPTS = "--height 40% --reverse"
 
 # command history
-Set-PSReadLineKeyHandler -Chord 'Ctrl+r' -ScriptBlock { Invoke-FuzzyHistory; [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine() }
+Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # cd history
 Set-PSReadLineKeyHandler -Chord 'Ctrl+z' -ScriptBlock { Invoke-FuzzyZLocation; [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine() }
