@@ -1,5 +1,4 @@
-﻿### Set ExecutionPolicy ### 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+﻿Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 
 ### Install Winget Packages ###
@@ -39,7 +38,6 @@ winget install --id=Learnpulse.Screenpresso  -e
 winget install WinMerge
 
 winget install -e --id Google.JapaneseIME
-winget install -e --id=Obsidian.Obsidian
 
 # 必要に応じて入れるもの
 # winget install Sourcetree
