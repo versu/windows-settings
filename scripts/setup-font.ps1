@@ -1,4 +1,8 @@
-﻿if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-File `"$PSCommandPath`"" -Verb RunAs; exit }
+﻿# 管理者権限で実行していない場合は、管理者権限で再起動
+if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
+    Start-Process powershell.exe "-NoExit -File `"$PSCommandPath`"" -Verb RunAs
+    exit 
+}
 
 function InstallFonts($fontsPath){
   # Expand-Archive -Path "$($tempPath)\fonts.zip" -Destination $($fontsPath) -Force

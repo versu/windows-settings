@@ -35,7 +35,7 @@ winget install -e --id=Microsoft.Sysinternals.RDCMan
 winget install Postman.Postman
 winget install -e --id 7zip.7zip
 winget install --id=Learnpulse.Screenpresso  -e
-winget install WinMerge
+
 
 winget install -e --id Google.JapaneseIME
 
@@ -48,6 +48,8 @@ winget install -e --id Google.JapaneseIME
 # winget install Microsoft.SQLServerManagementStudio
 # winget install Docker.DockerDesktop
 # winget install -e --id Discord.Discord
+
+# winget install WinMerge
 
 # Azure 
 # winget install Microsoft.AzureStorageExplorer
