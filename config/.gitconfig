@@ -4,6 +4,6 @@
 
 [ghq]
     user = nishitani
-    root = ~/repos
+    root = ~/repo
 [core]
 	autocrlf = false
