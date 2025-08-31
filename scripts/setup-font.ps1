@@ -1,10 +1,4 @@
-﻿# 管理者権限で実行していない場合は、管理者権限で再起動
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { 
-    Start-Process powershell.exe "-NoExit -File `"$PSCommandPath`"" -Verb RunAs
-    exit 
-}
-
-function InstallFonts($fontsPath){
+﻿function InstallFonts($fontsPath){
   # Expand-Archive -Path "$($tempPath)\fonts.zip" -Destination $($fontsPath) -Force
   $systemFontsPath = "C:\Windows\Fonts"
   $getFonts = Get-ChildItem $fontsPath -Include '*.ttf','*.ttc','*.otf' -recurse
@@ -31,6 +25,10 @@ function InstallFonts($fontsPath){
   }
 }
 
+$ErrorActionPreference = "Stop"
+
+$isAdmin = (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+
 # common.ps1を読み込む
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
@@ -40,6 +38,12 @@ $loggerScriptPath = "$($PSScriptRoot)/utils/logger.ps1"
 . $loggerScriptPath
 
 $logPath = "$($env:LOG_DIR)\setup-font.log"
+
+if (!$isAdmin) { 
+    WriteErrorLog -logPath $logPath -message "このスクリプトは管理者権限で実行する必要があります。"
+    WriteErrorLog -logPath $logPath -message "現在の実行権限が不足しています。"
+    exit 1
+}
 
 $FONT_URL = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Hack.zip"
 $FONT_URL_NAME = [System.IO.Path]::GetFileName($FONT_URL)
@@ -51,7 +55,6 @@ $DOWNLOAD_NERD_FONT_PATH = [System.IO.Path]::Combine($DOWNLOAD_DIR, $FONT_URL_NA
 $UNZIPPED_FONT_DIR = "$PSScriptRoot\_unzipped"
 $UNZIPPED_NERD_FONT_DIR = [System.IO.Path]::Combine($UNZIPPED_FONT_DIR, $FONT_URL_NAME_WITHOUTEXTENSION)
 
-$ErrorActionPreference = "Stop"
 try 
 {
   if  (!(Test-Path $DOWNLOAD_DIR)){

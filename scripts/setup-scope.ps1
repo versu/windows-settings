@@ -1,4 +1,6 @@
-﻿# common.ps1を読み込む
+﻿$ErrorActionPreference = "Stop"
+
+# common.ps1を読み込む
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
 
@@ -7,8 +9,6 @@ $loggerScriptPath = "$($PSScriptRoot)/utils/logger.ps1"
 . $loggerScriptPath
 
 $logPath = "$($env:LOG_DIR)\setup-scope.log"
-
-$ErrorActionPreference = "Stop"
 
 try 
 {

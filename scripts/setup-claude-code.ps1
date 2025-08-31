@@ -1,5 +1,6 @@
-﻿# 管理者権限で実行していない場合は、管理者権限で再起動
-if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrators")) { Start-Process powershell.exe "-NoExit -File `"$PSCommandPath`"" -Verb RunAs; exit }
+﻿$ErrorActionPreference = "Stop"
+
+$isAdmin = (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 $commonScriptPath = "$($PSScriptRoot)/common.ps1"
 . $commonScriptPath
@@ -9,7 +10,11 @@ $loggerScriptPath = "$($PSScriptRoot)/utils/logger.ps1"
 
 $logPath = "$($env:LOG_DIR)\setup-claude-code.log"
 
-$ErrorActionPreference = "Stop"
+if (!$isAdmin) { 
+    WriteErrorLog -logPath $logPath -message "このスクリプトは管理者権限で実行する必要があります。"
+    WriteErrorLog -logPath $logPath -message "現在の実行権限が不足しています。"
+    exit 1
+}
 
 try 
 {

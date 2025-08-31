@@ -12,7 +12,7 @@ winget install Git.Git
 winget install Fork.Fork
 
 # db client
-winget install dbeaver.dbeaver
+winget install -e --id DBeaver.DBeaver.Community
 
 # draw.io
 winget install -e --id JGraph.Draw
