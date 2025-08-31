@@ -1,4 +1,4 @@
-﻿$installDir = "$($env:USERPROFILE)/repos/github.com/versu/windows-settings"
+﻿$installDir = "$($env:USERPROFILE)/repo/github.com/versu/windows-settings"
 
 if (Test-Path -Path $installDir -PathType Container) {
   Write-Host "Updating windows-settings..."
