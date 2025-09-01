@@ -11,9 +11,23 @@
                     "handlerId": "ExecuteCommand"
                 }
             ],
-            "name": "lo",
+            "name": "lock",
             "id": "workflow-799fcb9d-2d09-4e86-b6f0-254c98544fa5",
             "requiresConfirmation": false
+        },
+        {
+            "actions": [
+                {
+                    "id": "workflow-action-2d9137eb-12cd-4472-916e-026c01ac40f2",
+                    "args": {
+                        "command": "powershell -command \"Add-Type -AssemblyName System.Windows.Forms;[System.Windows.Forms.Application]::SetSuspendState(0, $false, $false)\""
+                    },
+                    "name": "Window Sleep",
+                    "handlerId": "ExecuteCommand"
+                }
+            ],
+            "name": "sleep",
+            "id": "workflow-3bf728e1-ff0a-4a7e-a376-5830cc2c53ad"
         }
     ],
     "extensions.enabledExtensionIds": [
