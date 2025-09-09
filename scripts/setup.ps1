@@ -99,6 +99,7 @@ try {
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-obsidian.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-ueli.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-windows.ps1" -RequireAdmin $false
+    Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-rdcman.ps1" -RequireAdmin $false
 
 }
 catch {

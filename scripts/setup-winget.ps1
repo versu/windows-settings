@@ -25,13 +25,6 @@ winget install -e --id JGraph.Draw
 # ------------------------------------------------------------------------------------
 winget install vscode --override "/silent /mergetasks=""addcontextmenufiles,addcontextmenufolders"""
 
-# ------------------------------------------------------------------------------------
-# RDCMan (Remote Desktop Connection Manager)
-# インストール後、rdcman というコマンドが使えるようになる（要ターミナル再起動）
-# rdcmanコマンドでRDCManを起動できる。
-# ------------------------------------------------------------------------------------
-winget install -e --id=Microsoft.Sysinternals.RDCMan
-
 winget install Postman.Postman
 winget install -e --id 7zip.7zip
 winget install --id=Learnpulse.Screenpresso  -e
@@ -70,4 +63,7 @@ winget install -e --id Google.JapaneseIME
 # plantuml などJavaが必要なツールを使う場合は、インストールする。
 # ------------------------------------------------------------------------------------
 # winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
+
+winget install --id=Adobe.Acrobat.Reader.64-bit  -e --override "/msi EULA_ACCEPT=YES ENABLE_OPTIMIZATION=1 DISABLEDESKTOPSHORTCUT=1"
+
 

@@ -6,8 +6,8 @@
     [switch]$DetailedLog
 )
 
-. "$PSScriptRoot\..\common.ps1"
-. "$PSScriptRoot\logger.ps1"
+. "$PSScriptRoot\..\..\common.ps1"
+. "$PSScriptRoot\..\logger.ps1"
 
 $logPath = "$env:LOG_DIR\find-winget-package-path.log"
 
@@ -108,6 +108,7 @@ try {
     if ($matchingPackages.Count -eq 0) {
         Write-Host "パッケージ '$PackageName' に一致するフォルダが見つかりませんでした。" -ForegroundColor Yellow
         WriteInfoLog -logPath $logPath -message "検索結果: マッチするパッケージなし"
+        return $null
     }
     else {
         Write-Host "`n見つかったパッケージ:" -ForegroundColor Green
@@ -125,6 +126,10 @@ try {
         }
         
         WriteInfoLog -logPath $logPath -message "検索完了: $($matchingPackages.Count)個のパッケージが見つかりました"
+        
+        # 最新のパッケージのパスを戻り値として返す
+        $latestPackage = $matchingPackages | Sort-Object LastWriteTime | Select-Object -Last 1
+        return $latestPackage.FullName
     }
     
     WriteInfoLog -logPath $logPath -message "=== wingetパッケージパス検索完了 ==="
