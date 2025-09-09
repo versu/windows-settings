@@ -91,6 +91,7 @@ try {
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-psprofile.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-links.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-font.ps1" -RequireAdmin $true
+    Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-editor-font.ps1" -RequireAdmin $true
 
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-volta.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-claude-code.ps1" -RequireAdmin $true
@@ -100,7 +101,6 @@ try {
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-ueli.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-windows.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-rdcman.ps1" -RequireAdmin $false
-
 }
 catch {
     $errorMessage = "ファサード実行エラー: $($_.Exception.Message)"
