@@ -63,6 +63,7 @@ winget install -e --id Google.JapaneseIME
 # plantuml などJavaが必要なツールを使う場合は、インストールする。
 # ------------------------------------------------------------------------------------
 # winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
+# winget install -e --id Graphviz.Graphviz
 
 winget install --id=Adobe.Acrobat.Reader.64-bit  -e --override "/msi EULA_ACCEPT=YES ENABLE_OPTIMIZATION=1 DISABLEDESKTOPSHORTCUT=1"
 
