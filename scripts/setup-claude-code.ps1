@@ -25,6 +25,10 @@ try
   WriteInfoLog -logPath $logPath -message "CLAUDE.mdのシンボリックリンクを作成します"
   New-Item -ItemType SymbolicLink -Path "$($env:USERPROFILE)/CLAUDE.md" -Target "$($env:CONFIG_FOLDER)/claude/CLAUDE.md" -Force
   WriteInfoLog -logPath $logPath -message "シンボリックリンクの作成が完了しました"
+
+  WriteInfoLog -logPath $logPath -message "settings.json のシンボリックリンクを作成します"
+  New-Item -ItemType SymbolicLink -Path "$($env:USERPROFILE)/.claude/settings.json" -Target "$($env:CONFIG_FOLDER)/claude/settings.json" -Force
+  WriteInfoLog -logPath $logPath -message "シンボリックリンクの作成が完了しました"
 }
 catch 
 {
