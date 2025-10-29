@@ -44,13 +44,16 @@ winget install -e --id Google.JapaneseIME
 
 # winget install WinMerge
 
-# Azure 
+# Azure
 # winget install Microsoft.AzureStorageExplorer
 
 # winget install -e --id=Microsoft.VisualStudio.2022.Community
 
 # Node.js
 # winget install -e --id=Volta.Volta 
+
+# Slack
+# winget install --id=SlackTechnologies.Slack  -e
 
 # ------------------------------------------------------------------------------------
 # Charles Proxy（ローカルプロキシツール）
