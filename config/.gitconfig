@@ -3,7 +3,7 @@
 	email = kindberwindow@gmail.com
 
 [ghq]
-    user = nishitani
+    user = versu
     root = ~/repo
 [core]
 	autocrlf = false
