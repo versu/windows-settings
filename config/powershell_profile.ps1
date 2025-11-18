@@ -2,6 +2,9 @@
 
 $env:STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml"
 $ENV:Path+=";C:\Program Files\7-Zip"
+
+# uv/uvx のパス。Serena の起動に必要
+$ENV:Path+=";$HOME\.local\bin"
 Invoke-Expression (&starship init powershell)
 
 ### ghq-fzf ###
