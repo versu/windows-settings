@@ -3,6 +3,10 @@
 $env:STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml"
 $ENV:Path+=";C:\Program Files\7-Zip"
 
+# PowerShell Core(PowerShell 7) のパス
+# pwsh.exe を直接呼び出す場合に必要(TODO: PowerShell Core に完全に移行したい)
+$ENV:Path+=";C:\Program Files\PowerShell\7\"
+
 # uv/uvx のパス。Serena の起動に必要
 $ENV:Path+=";$HOME\.local\bin"
 Invoke-Expression (&starship init powershell)

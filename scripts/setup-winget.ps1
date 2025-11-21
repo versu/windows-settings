@@ -32,6 +32,9 @@ winget install --id=Learnpulse.Screenpresso  -e
 
 winget install -e --id Google.JapaneseIME
 
+# PowerShell Core(PowerShell 7)
+winget install --id Microsoft.PowerShell
+
 # 必要に応じて入れるもの
 # winget install Sourcetree
 
