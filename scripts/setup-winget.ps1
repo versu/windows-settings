@@ -35,6 +35,10 @@ winget install -e --id Google.JapaneseIME
 # PowerShell Core(PowerShell 7)
 winget install --id Microsoft.PowerShell
 
+# cloudflared（Cloudflare Tunnel）
+# 外出先からこの PC へ RDP するために使う。
+winget install -e --id Cloudflare.cloudflared
+
 # 必要に応じて入れるもの
 # winget install Sourcetree
 
@@ -71,6 +75,19 @@ winget install --id Microsoft.PowerShell
 # winget install --id=EclipseAdoptium.Temurin.21.JDK  -e
 # winget install -e --id Graphviz.Graphviz
 
+# ------------------------------------------------------------------------------------
+# PowerToyrs（Windowsの便利ツール群）
+#   注意点
+#     ueli(ランチャー)起動のショートカット（alt + space）が競合するので、ショートカットは無効化しておく。
+#   使用する機能
+#     Fancyzones: ウィンドウレイアウトの配置を保存しておく機能
+# ------------------------------------------------------------------------------------
+# winget install -e --id Microsoft.PowerToys
+
 winget install --id=Adobe.Acrobat.Reader.64-bit  -e --override "/msi EULA_ACCEPT=YES ENABLE_OPTIMIZATION=1 DISABLEDESKTOPSHORTCUT=1"
 
+# ------------------------------------------------------------------------------------
+# NordVPN
+# ------------------------------------------------------------------------------------
+# winget install -e --id NordSecurity.NordVPN
 
