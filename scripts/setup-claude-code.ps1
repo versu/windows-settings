@@ -42,6 +42,52 @@ try
   New-Item -ItemType Directory -Path "$($env:USERPROFILE)/.claude" -Force | Out-Null
   New-Item -ItemType SymbolicLink -Path "$($env:USERPROFILE)/.claude/settings.json" -Target "$($env:CONFIG_FOLDER)/claude/settings.json" -Force
   WriteInfoLog -logPath $logPath -message "シンボリックリンクの作成が完了しました"
+
+  # Notion MCP（複数ワークスペース）の登録
+  # ※同じ URL のリモート MCP は Claude Code に重複登録できないため、mcp-remote 経由の stdio サーバーとして登録する
+  #   認証情報は MCP_REMOTE_CONFIG_DIR でワークスペースごとに保存先を分け、混ざらないようにしている
+  #   トークンを含むため %USERPROFILE%\.mcp-auth はリポジトリ管理外とする
+  #   npx は Node.js(Volta) に依存するため、setup-volta.ps1 実行後であること
+  $notionMcpUrl = "https://mcp.notion.com/mcp"
+  foreach ($workspace in @("private", "work")) {
+    $serverName = "notion-$workspace"
+    $authDir = "$($env:USERPROFILE)\.mcp-auth\$serverName"
+
+    WriteInfoLog -logPath $logPath -message "$serverName の登録確認"
+    # ※Windows PowerShell では $ErrorActionPreference = "Stop" 下で native コマンドの stderr をリダイレクトすると例外になるため、cmd 経由で捨てる
+    cmd /c "claude mcp get $serverName >nul 2>&1"
+    if ($LASTEXITCODE -eq 0) {
+      WriteInfoLog -logPath $logPath -message "$serverName は既に登録されています（スキップ）"
+    }
+    else {
+      # ※Windows では npx を直接起動できないため cmd /c 経由で起動する
+      #   '--' はクォートしないと PowerShell に解釈されて claude に渡らない場合があるためクォートしている
+      claude mcp add --scope user $serverName -e "MCP_REMOTE_CONFIG_DIR=$authDir" '--' cmd /c npx -y mcp-remote $notionMcpUrl
+      # ※native コマンドは失敗しても例外にならないため、終了コードで判定する
+      if ($LASTEXITCODE -ne 0) { throw "$serverName の登録に失敗しました (exit code: $LASTEXITCODE)" }
+      WriteInfoLog -logPath $logPath -message "$serverName を登録しました"
+    }
+
+    WriteInfoLog -logPath $logPath -message "$serverName の認証確認"
+    if (Get-ChildItem -Path "$authDir\*\*_tokens.json" -ErrorAction SilentlyContinue) {
+      WriteInfoLog -logPath $logPath -message "$serverName は既に認証されています（スキップ）"
+    }
+    else {
+      WriteInfoLog -logPath $logPath -message "ブラウザで認証してください。Notion の許可画面では「$workspace」ワークスペースを選択してください"
+      WriteInfoLog -logPath $logPath -message "ブラウザが開かない場合は、下に表示される URL を開いてください"
+      $env:MCP_REMOTE_CONFIG_DIR = $authDir
+      try {
+        npx -y -p mcp-remote mcp-remote-client $notionMcpUrl
+      }
+      finally {
+        Remove-Item Env:MCP_REMOTE_CONFIG_DIR -ErrorAction SilentlyContinue
+      }
+      if (-not (Get-ChildItem -Path "$authDir\*\*_tokens.json" -ErrorAction SilentlyContinue)) {
+        throw "$serverName の認証に失敗しました。スクリプトを再実行してください"
+      }
+      WriteInfoLog -logPath $logPath -message "$serverName の認証が完了しました"
+    }
+  }
 }
 catch 
 {
