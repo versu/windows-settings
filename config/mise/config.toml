@@ -1,0 +1,7 @@
+# mise のグローバル設定
+# setup-mise.ps1 で %USERPROFILE%\.config\mise\config.toml にシンボリックリンクされる
+# ツールを追加したら `mise install` を実行する
+
+[tools]
+# GitHub CLI
+gh = "latest"

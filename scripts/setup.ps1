@@ -94,6 +94,7 @@ try {
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-editor-font.ps1" -RequireAdmin $true
 
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-volta.ps1" -RequireAdmin $false
+    Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-mise.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-claude-code.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-serena.ps1" -RequireAdmin $true
 
