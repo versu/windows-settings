@@ -97,6 +97,7 @@ try {
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-mise.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-claude-code.ps1" -RequireAdmin $true
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-serena.ps1" -RequireAdmin $true
+    Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\orca\setup-wsl-ssh.ps1" -RequireAdmin $true
 
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-clibor.ps1" -RequireAdmin $false
     Invoke-ScriptSequentially -ScriptPath "$($env:SCRIPT_FOLDER)\setup-obsidian.ps1" -RequireAdmin $false
