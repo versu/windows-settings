@@ -35,7 +35,7 @@
       "Bash(npm uninstall:*)",
       "Bash(npm remove:*)"
     ],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "skipDangerousModePermissionPrompt": true,
   "agentPushNotifEnabled": false,
